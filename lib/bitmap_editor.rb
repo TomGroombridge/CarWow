@@ -11,7 +11,6 @@ class BitmapEditor
 
     File.open(file).each do |line|
       line = line.chomp
-
       if line == "S"
         return puts "sorry there is no image" if @bitmap.empty?
         return show_bitmap
@@ -46,7 +45,7 @@ class BitmapEditor
 
   def show_bitmap
     @bitmap.map do |row|
-      p row.join(' ').delete(' ')
+      puts row.join(' ').delete(' ')
     end
   end
 
