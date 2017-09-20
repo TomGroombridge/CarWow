@@ -1,9 +1,9 @@
 require 'pry-byebug'
-require './lib/command'
+require './lib/image'
 class BitmapEditor
 
   def initialize
-    @bitmap = []
+    @image = Image.new
   end
 
   def run(file)
@@ -11,12 +11,11 @@ class BitmapEditor
 
     File.open(file).each do |line|
       line = line.chomp
-      if line == "S"
-        return puts "sorry there is no image" if @bitmap.empty?
-        return show_bitmap
-      end
 
-      begin run_command(line)
+      return show_image if line == "S"
+
+      begin run_command(line.split(' '))
+
       rescue => e
         return puts 'unrecognised command :('
       end
@@ -27,26 +26,23 @@ class BitmapEditor
   private
 
   def run_command(line)
-    @command = Command.new(@bitmap, line)
-
-    case line.split(' ').first
+    case line.first
     when 'I'
-      @command.create_bitmap
+      @image.build(line)
     when 'L'
-      @command.change_pixel_colour
+      @image.change_pixel(line)
     when 'V'
-      @command.add_vertical_line_color
+      @image.add_vertical_line(line)
     when 'H'
-      @command.add_horizontal_line
+      @image.add_horizontal_line(line)
     else
       raise "error"
     end
   end
 
-  def show_bitmap
-    @bitmap.map do |row|
-      puts row.join(' ').delete(' ')
-    end
+  def show_image
+    return puts "sorry there is no image" if @image.pixels.empty?
+    @image.show
   end
 
 end
