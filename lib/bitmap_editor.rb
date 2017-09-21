@@ -36,7 +36,7 @@ class BitmapEditor
     when 'H'
       @image.add_horizontal_line(line)
     else
-      raise "error"
+      raise "command not recognised #{line}"
     end
   end
 
