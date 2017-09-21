@@ -4,7 +4,7 @@ class Image < Validation
   attr_accessor :pixels
 
   def initialize
-    self.pixels = []
+    @pixels = []
   end
 
   def build(line)
@@ -51,11 +51,11 @@ class Image < Validation
   end
 
   def number_of_collums
-    self.pixels.first.count
+    pixels.first.count
   end
 
   def number_of_rows
-    self.pixels.count
+    pixels.count
   end
 
 end
