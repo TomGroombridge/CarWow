@@ -42,7 +42,7 @@ class BitmapEditor
 
   def show_image
     return puts "sorry there is no image" if @image.pixels.empty?
-    @image.show
+    @image.pixels.each {|x| puts x.join(' ').delete(' ')}
   end
 
 end

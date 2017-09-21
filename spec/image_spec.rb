@@ -4,7 +4,7 @@ describe 'Image' do
 
   subject = Image.new
 
-  describe '#create_bitmap' do
+  describe '#build' do
     context 'Given a correct expression' do
 
       it 'should return an array with values as 0' do
@@ -16,7 +16,9 @@ describe 'Image' do
     context 'Given an expression that has too many rows or collums' do
 
       it 'should raise an error' do
-
+        expect{
+          subject.build(["I", "251", "4"])
+        }.to raise_error('Sorry this is not a valid number for the rows and collums')
       end
 
     end

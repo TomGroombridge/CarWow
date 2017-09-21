@@ -2,19 +2,17 @@ class Image
 
   attr_accessor :pixels
 
+  MAX_ROWS = 250
+  MAX_COLLUMS = 250
+
   def initialize
     self.pixels = []
-  end
-
-  def show
-    pixels.map do |row|
-      puts row.join(' ').delete(' ')
-    end
   end
 
   def build(line)
     rows = line[2].to_i
     collums = line[1].to_i
+    raise 'Sorry this is not a valid number for the rows and collums' if !validate(rows, collums)
     rows.times do
       pixels << Array.new(collums, '0')
     end
@@ -50,9 +48,7 @@ class Image
   end
 
   def validate(rows, collums)
-    if rows > MAX_ROWS || collums > MAX_COLLUMS
-      return false
-    end
+    !(rows > MAX_ROWS || collums > MAX_COLLUMS)
   end
 
 end
