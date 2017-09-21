@@ -35,14 +35,4 @@ class Validation
     end
   end
 
-  def number_of_collums
-    self.pixels.first.count
-  end
-
-  def number_of_rows
-    self.pixels.count
-  end
-
-
-
 end

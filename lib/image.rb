@@ -50,4 +50,12 @@ class Image < Validation
     @line_end = string_to_index(finish)
   end
 
+  def number_of_collums
+    self.pixels.first.count
+  end
+
+  def number_of_rows
+    self.pixels.count
+  end
+
 end
