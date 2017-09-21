@@ -17,7 +17,7 @@ class BitmapEditor
       begin run_command(line.split(' '))
 
       rescue => e
-        return puts "sorry you have a issue: #{e}"
+        return puts "Sorry we can't run this command due to: #{e}"
       end
     end
 
