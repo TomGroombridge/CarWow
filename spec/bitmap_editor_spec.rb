@@ -26,7 +26,7 @@ describe 'BitmapEditor' do
     it 'should give you a result' do
       expect do
         BitmapEditor.new.run @file
-      end.to output("unrecognised command :(\n").to_stdout
+      end.to output("sorry you have a issue: There aren't these many rows or collums\n").to_stdout
     end
 
   end

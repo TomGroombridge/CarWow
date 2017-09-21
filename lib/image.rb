@@ -1,6 +1,7 @@
-class Image
+require './lib/validation'
+class Image < Validation
 
-  attr_accessor :pixels
+  attr_accessor :pixels, :number_of_rows, :number_of_collums
 
   MAX_ROWS = 250
   MAX_COLLUMS = 250
@@ -10,17 +11,19 @@ class Image
   end
 
   def build(line)
-    rows = line[2].to_i
-    collums = line[1].to_i
-    raise 'Sorry this is not a valid number for the rows and collums' if !validate(rows, collums)
-    rows.times do
-      pixels << Array.new(collums, '0')
+    validate_size(line[2].to_i, line[1].to_i)
+    self.number_of_rows = line[2].to_i
+    self.number_of_collums = line[1].to_i
+    number_of_rows.times do
+      pixels << Array.new(number_of_collums, '0')
     end
   end
 
   def change_pixel(line)
     collums = string_to_index(line[1])
     rows = string_to_index(line[2])
+    validate_change_pixel_command(collums, rows)
+
     pixels[rows][collums] = line.last
   end
 
@@ -47,7 +50,7 @@ class Image
     @line_end = string_to_index(finish)
   end
 
-  def validate(rows, collums)
+  def validate_image(rows, collums)
     !(rows > MAX_ROWS || collums > MAX_COLLUMS)
   end
 
