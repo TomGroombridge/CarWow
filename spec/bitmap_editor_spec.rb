@@ -37,5 +37,10 @@ describe 'BitmapEditor' do
   xit "should not be able to run the file if the last command is not 'S' " do
   end
 
+  xit 'should not be able to accept lowercase letters into the command' do
+  end
+
+  xit 'should not be able to accept commands that begin with the correct letter'
+
 end
 
