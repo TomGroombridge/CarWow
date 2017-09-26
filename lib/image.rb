@@ -11,9 +11,9 @@ class Image < Validation
     validate_size(line)
 
     rows = line[2].to_i
-    collums = line[1].to_i
+    columns = line[1].to_i
     rows.times do
-      pixels << Array.new(collums, '0')
+      pixels << Array.new(columns, '0')
     end
   end
 
@@ -25,10 +25,10 @@ class Image < Validation
 
   def change_pixel(line)
     validate_change_pixel(line)
-    collums = string_to_index(line[1])
+    columns = string_to_index(line[1])
     rows = string_to_index(line[2])
 
-    pixels[rows][collums] = line.last
+    pixels[rows][columns] = line.last
   end
 
   def add_vertical_line(line)
@@ -56,7 +56,7 @@ class Image < Validation
     @line_end = string_to_index(finish)
   end
 
-  def number_of_collums
+  def number_of_columns
     pixels.first.count
   end
 
