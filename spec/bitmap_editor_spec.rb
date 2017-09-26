@@ -12,7 +12,7 @@ describe 'BitmapEditor' do
     it 'should give you a result' do
       expect do
         BitmapEditor.new.run @file
-      end.to output("00000\n00ZZZ\nAW000\n0W000\n0W000\n0W000\n").to_stdout
+      end.to output("OOOOO\nOOZZZ\nAWOOO\nOWOOO\nOWOOO\nOWOOO\n").to_stdout
     end
 
   end
@@ -23,12 +23,19 @@ describe 'BitmapEditor' do
       @subject = BitmapEditor.new.run @file
     end
 
-    it 'should give you a result' do
+    it 'should give you an error message' do
       expect do
         BitmapEditor.new.run @file
       end.to output("Sorry we can't run this command due to: There are not enough rows or columns in the image to excute 'L'\n").to_stdout
     end
 
   end
+
+  xit "should not be able to run the file if the first command is not 'I'" do
+  end
+
+  xit "should not be able to run the file if the last command is not 'S' " do
+  end
+
 end
 

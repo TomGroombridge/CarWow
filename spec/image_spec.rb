@@ -6,9 +6,9 @@ describe 'Image' do
 
   describe '#build' do
     context 'Given a correct expression' do
-      it 'should return an array with values as 0' do
+      it 'should return an array with values as O' do
         subject.build(["I", "2", "4"])
-        expect(subject.pixels).to eq [["0", "0"], ["0", "0"], ["0", "0"], ["0", "0"]]
+        expect(subject.pixels).to eq [["O", "O"], ["O", "O"], ["O", "O"], ["O", "O"]]
       end
     end
 
@@ -31,7 +31,7 @@ describe 'Image' do
         }.to raise_error("Can't plot numbers that are negative or zero")
       end
 
-      it 'should raise an error if you are trying to plot 0' do
+      it 'should raise an error if you are trying to plot O' do
         expect{
           subject.build(["I", "0", "4"])
         }.to raise_error("Can't plot numbers that are negative or zero")
@@ -43,12 +43,12 @@ describe 'Image' do
     context 'Given an grid with a correct expression' do
 
       before do
-        subject.pixels = [["0", "0"], ["0", "0"], ["0", "0"], ["0", "0"]]
+        subject.pixels = [["O", "O"], ["O", "O"], ["O", "O"], ["O", "O"]]
       end
 
       it 'should be able to change the colour of one of the pixels' do
         subject.change_pixel(["L", "1", "2", "A"])
-        expect(subject.pixels).to eq [["0", "0"], ["A", "0"], ["0", "0"], ["0", "0"]]
+        expect(subject.pixels).to eq [["O", "O"], ["A", "O"], ["O", "O"], ["O", "O"]]
       end
 
       it 'should raise an error if the command format is not correct' do
@@ -74,12 +74,12 @@ describe 'Image' do
   describe '#add_vertical_line_color' do
     context 'Given an grid with a correct expression' do
       before do
-        subject.pixels = [["0", "0"], ["0", "0"], ["0", "0"], ["0", "0"]]
+        subject.pixels = [["O", "O"], ["O", "O"], ["O", "O"], ["O", "O"]]
       end
 
       it 'should be able to add a vertical line of colour' do
         subject.add_vertical_line(["V", "1", "1", "3", "W"])
-        expect(subject.pixels).to eq [["W", "0"], ["W", "0"], ["W", "0"], ["0", "0"]]
+        expect(subject.pixels).to eq [["W", "O"], ["W", "O"], ["W", "O"], ["O", "O"]]
       end
 
       it 'should raise an error if the command format is not correct' do
@@ -100,18 +100,21 @@ describe 'Image' do
         }.to raise_error("Can't plot numbers that are negative or zero")
       end
 
+      xit 'should still be able to plot the line if the numbers are the wrong way round' do
+      end
+
     end
   end
 
   describe '#add_horizontal_line' do
     context 'Given an grid with a correct expression' do
       before do
-        subject.pixels = [["0", "0"], ["0", "0"], ["0", "0"], ["0", "0"]]
+        subject.pixels = [["O", "O"], ["O", "O"], ["O", "O"], ["O", "O"]]
       end
 
       it 'should be able to add a horizontal line of colour' do
         subject.add_horizontal_line(["H", "1", "2", "2", "Z"])
-        expect(subject.pixels).to eq [["0", "0"], ["Z", "Z"], ["0", "0"], ["0", "0"]]
+        expect(subject.pixels).to eq [["O", "O"], ["Z", "Z"], ["O", "O"], ["O", "O"]]
       end
 
       it 'should raise an error if the command format is not correct' do
@@ -131,18 +134,21 @@ describe 'Image' do
           subject.add_vertical_line(["H", "1", "2", "0", "Z"])
         }.to raise_error("Can't plot numbers that are negative or zero")
       end
+
+      xit 'should still be able to plot the line if the numbers are the wrong way round' do
+      end
     end
   end
 
   describe '#clear' do
     context 'Given a grid with a correct expression' do
       before do
-        subject.pixels = [["0", "X"], ["Y", "Z"], ["P", "Q"], ["S", "T"]]
+        subject.pixels = [["O", "X"], ["Y", "Z"], ["P", "Q"], ["S", "T"]]
       end
 
-      it 'should be able to clear the grid and convert every value to 0' do
+      it 'should be able to clear the grid and convert every value to O' do
         subject.clear
-        expect(subject.pixels).to eq [["0", "0"], ["0", "0"], ["0", "0"], ["0", "0"]]
+        expect(subject.pixels).to eq [["O", "O"], ["O", "O"], ["O", "O"], ["O", "O"]]
       end
 
     end

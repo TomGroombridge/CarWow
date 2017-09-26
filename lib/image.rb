@@ -13,13 +13,13 @@ class Image < Validation
     rows = line[2].to_i
     columns = line[1].to_i
     rows.times do
-      pixels << Array.new(columns, '0')
+      pixels << Array.new(columns, 'O')
     end
   end
 
   def clear
     @pixels = @pixels.map do |array|
-      array.map{|x| '0'}
+      array.map{|x| 'O'}
     end
   end
 
