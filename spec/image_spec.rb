@@ -116,14 +116,14 @@ describe 'Image' do
 
       it 'should raise an error if the command format is not correct' do
         expect{
-          subject.add_vertical_line(["H", "1", "2", "Z"])
+          subject.add_horizontal_line(["H", "1", "2", "Z"])
         }.to raise_error('Command format seems incorrect')
       end
 
       it 'should raise an error if the line is longer than the image' do
         expect{
-          subject.add_vertical_line(["V", "12", "12", "12", "W"])
-        }.to raise_error("There are not enough rows or columns in the image to excute 'V'")
+          subject.add_horizontal_line(["H", "12", "12", "12", "W"])
+        }.to raise_error("There are not enough rows or columns in the image to excute 'H'")
       end
 
       it 'should raise an error if it is given a zero number' do
