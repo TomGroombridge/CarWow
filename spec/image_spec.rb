@@ -112,6 +112,21 @@ describe 'Image' do
     end
   end
 
+  describe '#clear' do
+    context 'Given a grid with a correct expression' do
+      before do
+        subject.pixels = [["0", "X"], ["Y", "Z"], ["P", "Q"], ["S", "T"]]
+      end
+
+      it 'should be able to clear the grid and convert every value to 0' do
+        subject.clear
+        expect(subject.pixels).to eq [["0", "0"], ["0", "0"], ["0", "0"], ["0", "0"]]
+      end
+
+    end
+
+  end
+
 
 
 end

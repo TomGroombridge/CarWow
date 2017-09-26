@@ -17,6 +17,12 @@ class Image < Validation
     end
   end
 
+  def clear
+    @pixels = @pixels.map do |array|
+      array.map{|x| '0'}
+    end
+  end
+
   def change_pixel(line)
     validate_change_pixel(line)
     collums = string_to_index(line[1])
