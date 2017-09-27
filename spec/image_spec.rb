@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe 'Image' do
+describe Image do
 
-  subject = Image.new
+  subject = described_class.new
 
   describe '#build' do
     context 'Given a correct expression' do
@@ -40,7 +40,7 @@ describe 'Image' do
   end
 
   describe '#change_pixel_colour' do
-    context 'Given an grid with a correct expression' do
+    context 'Given an grid' do
 
       before do
         subject.pixels = [["O", "O"], ["O", "O"], ["O", "O"], ["O", "O"]]
@@ -72,7 +72,7 @@ describe 'Image' do
   end
 
   describe '#add_vertical_line_color' do
-    context 'Given an grid with a correct expression' do
+    context 'Given an grid' do
       before do
         subject.pixels = [["O", "O"], ["O", "O"], ["O", "O"], ["O", "O"]]
       end

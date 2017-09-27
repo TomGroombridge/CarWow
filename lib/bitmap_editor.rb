@@ -9,13 +9,17 @@ class BitmapEditor
   def run(file)
     return puts "please provide correct file" if file.nil? || !File.exists?(file)
 
-    File.open(file).each do |line|
-      line = line.chomp
+    File.open(file).each_with_index do |line, index|
+      return puts "Sorry but commands must be uppercase" unless line == line.upcase
 
-      return show_image if line == "S"
+      line = line.chomp.split(' ')
 
-      begin run_command(line.split(' '))
+      if index == 0
+        return puts "Sorry but the first command in the file must start with 'I'" unless line.first == "I"
+      end
 
+
+      begin run_command(line)
       rescue => e
         return puts "Sorry we can't run this command due to: #{e}"
       end
@@ -35,6 +39,8 @@ class BitmapEditor
       @image.add_vertical_line(line)
     when 'H'
       @image.add_horizontal_line(line)
+    when 'S'
+      show_image
     else
       raise "command not recognised #{line}"
     end
