@@ -57,8 +57,5 @@ RSpec.describe BitmapEditor do
     end
   end
 
-  xit "should not be able to run the file if the last command is not 'S' " do
-  end
-
 end
 

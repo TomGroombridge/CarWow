@@ -100,9 +100,6 @@ describe Image do
         }.to raise_error("Can't plot numbers that are negative or zero")
       end
 
-      xit 'should still be able to plot the line if the numbers are the wrong way round' do
-      end
-
     end
   end
 
@@ -135,8 +132,6 @@ describe Image do
         }.to raise_error("Can't plot numbers that are negative or zero")
       end
 
-      xit 'should still be able to plot the line if the numbers are the wrong way round' do
-      end
     end
   end
 
